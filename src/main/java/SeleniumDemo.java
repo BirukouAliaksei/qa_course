@@ -26,6 +26,7 @@ public class SeleniumDemo {
 		blogSearch.submit();
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		System.out.println(driver.getTitle()+ " second ");
+
 		driver.quit();
 
     }
