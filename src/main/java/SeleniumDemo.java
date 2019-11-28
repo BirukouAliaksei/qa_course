@@ -7,7 +7,6 @@ import java.util.concurrent.TimeUnit;
 
 public class SeleniumDemo {
 
-
     public static void main(String[] args) throws InterruptedException {
 		System.setProperty("webdriver.chrome.driver", "C:/projects/qa_course/driver/chromedriver.exe");
 		WebDriver driver = new ChromeDriver();
