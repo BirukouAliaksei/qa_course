@@ -17,21 +17,21 @@ public class QaWebAutomaton3 {
         inputBanana.click();
         inputBanana.submit();
         // By xpath
-        WebElement filterByType = driver.findElement(By.xpath("/html/body/div[6]/div[3]/div[5]/div/div/div[1]/div/div/div[1]/div/div[2]/a"));
-        filterByType.click();
-        filterByType.submit();
+//        WebElement filterByType = driver.findElement(By.xpath("/html/body/div[6]/div[3]/div[5]/div/div/div[1]/div/div/div[1]/div/div[2]/a"));
+//        filterByType.click();
+//        filterByType.submit();
         // By css
 //        WebElement filterByTypeCss = driver.findElement(By.cssSelector("#hdtb-msb-vis > div:nth-child(2) > a > span"));
 //        filterByTypeCss.click();
 //        driver.quit();
         // simple selectors
-        List<WebElement> filters = driver.findElements(By.className("hdtb-mitem hdtb-imb"));
-//        Optional<WebElement> filterByType = filters.stream().filter(elem -> {
-//            String titleAttr = elem.getAttribute("q qs");
-//            return titleAttr != null && titleAttr.equals("q qs");
-//        }).findFirst();
-//        if (!filterByType.isPresent())
-//            throw new NoSuchElementException("Filter not found");
-//        filterByType.get().click();
+        List<WebElement> filters = driver.findElements(By.className("q qs"));
+        Optional<WebElement> filterByType = filters.stream().filter(elem -> {
+            String titleAttr = elem.getAttribute("class");
+            return titleAttr != null && titleAttr.equals("HF9Klc iJddsb");
+        }).findFirst();
+        if (!filterByType.isPresent())
+            throw new NoSuchElementException("Filter not found");
+        filterByType.get().click();
     }
 }
