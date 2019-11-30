@@ -11,9 +11,8 @@ public class QaWebAutomationTest3 {
         System.setProperty("webdriver.chrome.driver", "C:/projects/qa_course/driver/chromedriver.exe");
         WebDriver driver = new ChromeDriver();
         driver.navigate().to("http://google.com");
-//        searchByXpath();
 
-//        driver.manage().window().fullscreen();
+        driver.manage().window().maximize();
 
 //        WebElement userName = driver.findElement(By.cssSelector("input.gLFyf.gsfi"));
 //        userName.sendKeys("hi");
@@ -32,16 +31,17 @@ public class QaWebAutomationTest3 {
 //        searchById.click();
 //        searchById.submit();
 
-//        WebElement searchByAttr = driver.findElement(By.cssSelector("a[]"));
-//        searchByAttr.click();// разобраться
+        WebElement searchByAttr = driver.findElement(By.cssSelector("input[name='q']"));
+        searchByAttr.sendKeys("hi");
+        searchByAttr.submit();
 //
 //        WebElement searchByClass = driver.findElement(By.cssSelector("div.gb_h.gb_i"));
 //        searchByClass.sendKeys("hi");
 //        searchByClass.click();
 
-        WebElement searchNameInput = driver.findElement(By.xpath("//input[@class='gLFyf gsfi']"));
-        searchNameInput.sendKeys("hi");
-        searchNameInput.submit();
+//        WebElement searchNameInput = driver.findElement(By.xpath("//input[@class='gLFyf gsfi']"));
+//        searchNameInput.sendKeys("hi");
+//        searchNameInput.submit();
 
 //        WebElement searchName2 = driver.findElement(By.xpath("//div/a"));
 //        searchName2.click();
