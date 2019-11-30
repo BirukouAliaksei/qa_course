@@ -6,10 +6,13 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import java.util.List;
 
 public class QaWebAutomationTest3 {
+
     public static void main(String[] args) {
         System.setProperty("webdriver.chrome.driver", "C:/projects/qa_course/driver/chromedriver.exe");
         WebDriver driver = new ChromeDriver();
         driver.navigate().to("http://google.com");
+//        searchByXpath();
+
 //        driver.manage().window().fullscreen();
 
 //        WebElement userName = driver.findElement(By.cssSelector("input.gLFyf.gsfi"));
@@ -30,15 +33,15 @@ public class QaWebAutomationTest3 {
 //        searchById.submit();
 
 //        WebElement searchByAttr = driver.findElement(By.cssSelector("a[]"));
-////        searchByAttr.click();// разобраться
+//        searchByAttr.click();// разобраться
 //
 //        WebElement searchByClass = driver.findElement(By.cssSelector("div.gb_h.gb_i"));
-////        searchByClass.sendKeys("hi");
+//        searchByClass.sendKeys("hi");
 //        searchByClass.click();
 
-//        WebElement searchNameInput = driver.findElement(By.xpath("//input[@class='gLFyf gsfi']"));
-//        searchNameInput.sendKeys("hi");
-//        searchNameInput.submit();
+        WebElement searchNameInput = driver.findElement(By.xpath("//input[@class='gLFyf gsfi']"));
+        searchNameInput.sendKeys("hi");
+        searchNameInput.submit();
 
 //        WebElement searchName2 = driver.findElement(By.xpath("//div/a"));
 //        searchName2.click();
@@ -56,14 +59,10 @@ public class QaWebAutomationTest3 {
 //        searchName.getText();
 //        System.out.println(searchName.getTagName());
 //        driver.quit();
-
-        List<WebElement> imagesWithAlt = driver.findElements(By.xpath("//img[@alt]"));
-        System.out.println(imagesWithAlt);
-        driver.quit();
-
-
-
-
+//
+//        List<WebElement> imagesWithAlt = driver.findElements(By.xpath("//img[@alt]"));
+//        System.out.println(imagesWithAlt);
+//        driver.quit();
 
     }
 }

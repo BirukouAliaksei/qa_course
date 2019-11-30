@@ -25,13 +25,14 @@ public class QaWebAutomaton3 {
 //        filterByTypeCss.click();
 //        driver.quit();
         // simple selectors
-        List<WebElement> filters = driver.findElements(By.className("q qs"));
+        List<WebElement> filters = driver.findElements(By.className("HF9Klc iJddsb"));
         Optional<WebElement> filterByType = filters.stream().filter(elem -> {
-            String titleAttr = elem.getAttribute("class");
-            return titleAttr != null && titleAttr.equals("HF9Klc iJddsb");
+            String titleAttr = elem.getAttribute("text");
+            return titleAttr != null && titleAttr.equals("Відарысы");
         }).findFirst();
         if (!filterByType.isPresent())
             throw new NoSuchElementException("Filter not found");
         filterByType.get().click();
+        filterByType.get().submit();
     }
 }
