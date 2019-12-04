@@ -4,6 +4,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 
+import java.text.Format;
 import java.util.BitSet;
 import java.util.List;
 
@@ -23,6 +24,7 @@ public class TableCounter{
         table.getAllLineOfTable(5,1);
         table.getAllLineOfTable(2,3);
         table.getAllLineOfTable(3,2);
+
 
 
 

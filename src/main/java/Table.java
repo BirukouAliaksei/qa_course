@@ -15,8 +15,8 @@ public class Table extends TableCounter {
         String firstLineOfTableChanged = firstLineOfTable;
         WebElement firstLineOfTableOfElement = driver.findElement(By.xpath(firstLineOfTableChanged));
         System.out.println("it is the first line - " + firstLineOfTableOfElement.getText());
-        //*[@id="customers"]/tbody/tr[1]/th[1]
     }
+
     public void getElementLineOfTable(int row, int column) {
 
         String elementOffirstLineOfTable = "//*[@id='customers']/tbody/tr[" + row + "]/th[" + column + "]";
@@ -25,14 +25,7 @@ public class Table extends TableCounter {
         System.out.println("it is the first Element in Line - " + firstLineOfTableOfElement.getText());
 
     }
-    public void getFirstElementLineOfTable(int row, int column){
 
-        String elementOffirstLineOfTable = "//*[@id='customers']/tbody/tr["+row+"]/th["+column+"]";
-        String firstLineOfTableChanged = elementOffirstLineOfTable;
-        WebElement firstLineOfTableOfElement = driver.findElement(By.xpath(firstLineOfTableChanged));
-        System.out.println("it is the first Element in Line - " + firstLineOfTableOfElement.getText());
-
-    }
     public void getAllLineOfTable(int row, int column) {
 
         String elementOffirstLineOfTable = "//*[@id='customers']/tbody/tr[" + row + "]/td[" + column + "]";
