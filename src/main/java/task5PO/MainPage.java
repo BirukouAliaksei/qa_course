@@ -3,6 +3,8 @@ package task5PO;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
 public class MainPage {
     private static WebDriver driver;
@@ -18,6 +20,7 @@ public class MainPage {
     private By signUpFormBtn = By.xpath("//button[text()='Sign up for GitHub']");
     private By userNameError = By.xpath("//input[@id='user[login]']/ancestor::dd/following-sibling::dd/div/div");
     private By emailError = By.xpath("//input[@id='user[email]']/ancestor::dd/following-sibling::dd");
+    private By searching = By.xpath("//input[text]");
 
     public MainPage(WebDriver driver) {
     }
@@ -96,6 +99,12 @@ public class MainPage {
 
     public String getEmailErrorText() {
         return driver.findElement(emailError).getText();
+    }
+
+    public MainPage searchForm(){
+        driver.findElement(searching).sendKeys("GitHi");
+        return this;
+
     }
 
 }

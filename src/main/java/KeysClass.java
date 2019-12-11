@@ -6,6 +6,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 
+import java.util.concurrent.TimeUnit;
+
 public class KeysClass {
     public static void main(String[] args) {
         System.setProperty("webdriver.chrome.driver", "C:/projects/qa_course/driver/chromedriver.exe");
@@ -38,6 +40,7 @@ public class KeysClass {
 //        System.out.println(driver.getTitle());
 //
         Actions builder1 = new Actions(driver);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         builder1.moveToElement(searchInput)
                 .sendKeys(inputText)
                 .sendKeys(Keys.CONTROL,"a")

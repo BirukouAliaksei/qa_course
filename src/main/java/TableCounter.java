@@ -24,11 +24,6 @@ public class TableCounter{
         table.getAllLineOfTable(5,1);
         table.getAllLineOfTable(2,3);
         table.getAllLineOfTable(3,2);
-
-
-
-
-//        driver.quit();
-
+        driver.quit();
     }
 }

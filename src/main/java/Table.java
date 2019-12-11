@@ -9,6 +9,7 @@ public class Table extends TableCounter {
 
     private OptionalInt filters;
 
+
     public void getLineOfTable(int row) {
 
         String firstLineOfTable = "//*[@id='customers']/tbody/tr["+row+"]";

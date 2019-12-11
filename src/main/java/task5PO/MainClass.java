@@ -23,16 +23,10 @@ public class MainClass {
         MainPage mainPage = new MainPage(driver);
 
 //        mainPage.registerUser("testusername", "testemail@email.com", "qweqwe253253");
-
 		mainPage.clickSignInBtn().loginWithInvalidCreds("testusername", "qweqwe253253");
         // Username error
 //		mainPage.setUserNameFooter("Patric")
-//                .setEmailFooter("patric@gmail.com")
-//                .setPasswordFooter("t8ffff999")
-//                .clickSignUpFooterBtn();
-
-        // User name error ( время выполнения дольше )
-		mainPage.registerUserinFooter("Patric", "patric@gmail.com", "44455g555").getUserNameErrorFooter();
+//		mainPage.registerUserinFooter("Patric", "patric@gmail.com", "44455g555").getUserNameErrorFooter();
 
     }
 }
