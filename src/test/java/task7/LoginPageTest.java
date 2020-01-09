@@ -1,21 +1,13 @@
 package task7;
 
-import org.junit.*;
+import org.junit.jupiter.api.*;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.time.Duration;
-import java.util.concurrent.TimeUnit;
+import static org.junit.jupiter.api.Assertions.*;
 
-import static org.junit.Assert.assertEquals;
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
+public class LoginPageTest extends LoginPage {
 
-public class LoginPageTest extends LoginPage{
-
-//    static WebDriverWait wait;
     private By loginform;
     private By logOutForm = By.xpath("//*[@class='btn dropdown-toggle btn-success navbar-btn']");
     private By logOuteFormButton = By.partialLinkText("Logout");
@@ -42,49 +34,49 @@ public class LoginPageTest extends LoginPage{
 
 
     @Test
+    @Order(1)
     public void login() {
-        driver.get("http://open-eshop.stqa.ru/oc-panel/auth/login");
         driver.findElement(emeilField).sendKeys(email);
         driver.findElement(passwordField).sendKeys(password);
         driver.findElement(logInButton).submit();
-        Assert.assertEquals(afterLoginUrl, driver.getCurrentUrl());
+        assertEquals(afterLoginUrl, driver.getCurrentUrl());
     }
 
     @Test
+    @Order(2)
     public void couponCreator() throws InterruptedException {
         driver.findElement(eShopButton).click();
         driver.findElement(selectCouponButton).click();
         driver.findElement(newCoupon).click();
         Thread.sleep(1000);
         driver.findElement(couponName).sendKeys("shaurma");
-        driver.findElement(couponDiscount).click();
         driver.findElement(couponDiscount).sendKeys("55");
         driver.findElement(couponDate).sendKeys("2020-01-09");// добавить переменную текущая дата
         driver.findElement(couponNum).clear();
         driver.findElement(couponNum).sendKeys("666");
         driver.findElement(submitBtn).click();
-        Assert.assertEquals("Success", driver.findElement(By.xpath("//*[@class='alert-heading']")).getText());
-        Assert.assertEquals("shaurma", driver.findElement(By.xpath("//*[@class='table-responsive']//tbody/tr[1]/td[1]")).getText());
-
+        assertEquals("Success", driver.findElement(By.xpath("//*[@class='alert-heading']")).getText());
+        assertEquals("shaurma", driver.findElement(By.xpath("//*[@class='table-responsive']//tbody/tr[1]/td[1]")).getText());
     }
 
     @Test
+    @Order(3)
     public void couponSearch() throws InterruptedException {
-        TimeUnit.SECONDS.sleep(1);
-        driver.findElement(searchForm).click();
+        Thread.sleep(1000);
         driver.findElement(searchForm).sendKeys("shaurma");
         driver.findElement(submitBtnForSearchCoupon).click();
         Thread.sleep(1000);
+        System.out.println(driver.findElement(By.xpath("//*[@class='table table-striped table-bordered']/tbody/tr[1]/td[1]")).getText());
+        assertEquals("shaurma", driver.findElement(By.xpath("//*[@class='table table-striped table-bordered']/tbody/tr[1]/td[1]")).getText());
+    }
+
+    @Test
+    @Order(4)
+    public void couponDelete() throws InterruptedException {
         driver.findElement(delBtn).click();
         Thread.sleep(1000);
         driver.findElement(confirmBtn).click();
-        System.out.println(driver.findElement(By.xpath("//*[@class='table table-striped table-bordered']/tbody/tr[1]/td[1]")).getText());
-        Assert.assertEquals("shaurma",driver.findElement(By.xpath("//*[@class='table table-striped table-bordered']/tbody/tr[1]/td[1]")).getText());
-
+        assertFalse(driver.findElement(By.xpath("//*[@class='table table-striped table-bordered']//*[@style='display: none;']")).isDisplayed());
     }
 
-//    @AfterClass
-//    public static void closeBrowser(){
-//        driver.quit();
-//    }
 }
