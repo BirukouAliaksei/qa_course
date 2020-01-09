@@ -8,7 +8,6 @@ import static org.junit.jupiter.api.Assertions.*;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class LoginPageTest extends LoginPage {
 
-    private By loginform;
     private By logOutForm = By.xpath("//*[@class='btn dropdown-toggle btn-success navbar-btn']");
     private By logOuteFormButton = By.partialLinkText("Logout");
     private By emeilField = By.xpath("//*[@class='col-lg-9']//*[@class='well form-horizontal auth']//*[@name='email']");
@@ -31,6 +30,7 @@ public class LoginPageTest extends LoginPage {
     private String password = "demo";
     String couponPageLink = "http://open-eshop.stqa.ru/oc-panel/coupon";
     String afterLoginUrl = "http://open-eshop.stqa.ru/oc-panel";
+    String loginPageLink = "http://open-eshop.stqa.ru/oc-panel/auth/login";
 
 
     @Test
@@ -77,6 +77,15 @@ public class LoginPageTest extends LoginPage {
         Thread.sleep(1000);
         driver.findElement(confirmBtn).click();
         assertFalse(driver.findElement(By.xpath("//*[@class='table table-striped table-bordered']//*[@style='display: none;']")).isDisplayed());
+    }
+
+    @Test
+    @Order(5)
+    public void logOut() throws InterruptedException {
+        Thread.sleep(500);
+        driver.findElement(By.xpath("//*[@class='btn dropdown-toggle btn-success navbar-btn']")).click();
+        driver.findElement(By.partialLinkText("Logout")).click();
+        assertEquals(loginPageLink, driver.getCurrentUrl());
     }
 
 }

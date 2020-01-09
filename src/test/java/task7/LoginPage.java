@@ -22,11 +22,8 @@ public class LoginPage {
     }
 
     @AfterAll
-    public static void logOut() throws InterruptedException {
-        Thread.sleep(500);
-        driver.findElement(By.xpath("//*[@class='btn dropdown-toggle btn-success navbar-btn']")).click();
-        driver.findElement(By.partialLinkText("Logout")).click();
-
+    public static void closeBrowser()  {
+        driver.quit();
     }
 
 
