@@ -4,9 +4,12 @@ import org.junit.jupiter.api.*;
 import org.openqa.selenium.By;
 
 import static org.junit.jupiter.api.Assertions.*;
+import org.apache.log4j.Logger;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class LoginPageTest extends LoginPage {
+
+    private static final Logger log = Logger.getLogger(LoginPageTest.class);
 
     private By logOutForm = By.xpath("//*[@class='btn dropdown-toggle btn-success navbar-btn']");
     private By logOuteFormButton = By.partialLinkText("Logout");
@@ -40,6 +43,7 @@ public class LoginPageTest extends LoginPage {
         driver.findElement(passwordField).sendKeys(password);
         driver.findElement(logInButton).submit();
         assertEquals(afterLoginUrl, driver.getCurrentUrl());
+        log.info("Login Successfull");
     }
 
     @Test
@@ -57,6 +61,7 @@ public class LoginPageTest extends LoginPage {
         driver.findElement(submitBtn).click();
         assertEquals("Success", driver.findElement(By.xpath("//*[@class='alert-heading']")).getText());
         assertEquals("shaurma", driver.findElement(By.xpath("//*[@class='table-responsive']//tbody/tr[1]/td[1]")).getText());
+        log.info("Coupon is create");
     }
 
     @Test
@@ -66,8 +71,9 @@ public class LoginPageTest extends LoginPage {
         driver.findElement(searchForm).sendKeys("shaurma");
         driver.findElement(submitBtnForSearchCoupon).click();
         Thread.sleep(1000);
-        System.out.println(driver.findElement(By.xpath("//*[@class='table table-striped table-bordered']/tbody/tr[1]/td[1]")).getText());
         assertEquals("shaurma", driver.findElement(By.xpath("//*[@class='table table-striped table-bordered']/tbody/tr[1]/td[1]")).getText());
+        log.info("Coupon found");
+
     }
 
     @Test
@@ -77,6 +83,7 @@ public class LoginPageTest extends LoginPage {
         Thread.sleep(1000);
         driver.findElement(confirmBtn).click();
         assertFalse(driver.findElement(By.xpath("//*[@class='table table-striped table-bordered']//*[@style='display: none;']")).isDisplayed());
+        log.info("Coupon deleted");
     }
 
     @Test
